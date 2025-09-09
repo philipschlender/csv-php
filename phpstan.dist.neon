@@ -1,0 +1,9 @@
+parameters:
+    level: 8
+    paths:
+        - src
+        - tests
+    ignoreErrors:
+        -
+            message: '#Method Csv\\Models\\Stream::readRow\(\) should return array<int, string> but returns list<string\|null>.#'
+            path: src/Models/Stream.php
