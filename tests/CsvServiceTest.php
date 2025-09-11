@@ -4,11 +4,12 @@ namespace Tests;
 
 use Csv\Exceptions\CsvException;
 use Csv\Services\CsvService;
+use Csv\Services\CsvServiceInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 class CsvServiceTest extends TestCase
 {
-    protected CsvService $csvService;
+    protected CsvServiceInterface $csvService;
 
     protected function setUp(): void
     {
