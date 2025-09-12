@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9076b02cc544a7216221cad6e4318344",
+    "content-hash": "e974ec15cf4097f510595c7cebcd60d3",
     "packages": [
         {
             "name": "philipschlender/fs-php",
-            "version": "3.1.1",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/philipschlender/fs-php.git",
-                "reference": "195092dfc64f158280274f90eb7aeb31c56fa457"
+                "reference": "ec652298d010badba59c8fcd20e7d7053203b3fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/philipschlender/fs-php/zipball/195092dfc64f158280274f90eb7aeb31c56fa457",
-                "reference": "195092dfc64f158280274f90eb7aeb31c56fa457",
+                "url": "https://api.github.com/repos/philipschlender/fs-php/zipball/ec652298d010badba59c8fcd20e7d7053203b3fb",
+                "reference": "ec652298d010badba59c8fcd20e7d7053203b3fb",
                 "shasum": ""
             },
             "require": {
@@ -26,7 +26,7 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.85",
-                "philipschlender/faker-php": "^2.0",
+                "philipschlender/faker-php": "^2.2",
                 "phpstan/phpstan": "^2.1",
                 "phpunit/phpunit": "^12.2"
             },
@@ -69,9 +69,9 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/philipschlender/fs-php/tree/3.1.1"
+                "source": "https://github.com/philipschlender/fs-php/tree/3.2.0"
             },
-            "time": "2025-09-10T12:20:30+00:00"
+            "time": "2025-09-12T07:18:53+00:00"
         }
     ],
     "packages-dev": [
@@ -811,16 +811,16 @@
         },
         {
             "name": "philipschlender/faker-php",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/philipschlender/faker-php.git",
-                "reference": "6b0135069fd14bd362238297a91154451710fefa"
+                "reference": "12b24fc1537d683bceaccdc95470f5901b8fe66f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/philipschlender/faker-php/zipball/6b0135069fd14bd362238297a91154451710fefa",
-                "reference": "6b0135069fd14bd362238297a91154451710fefa",
+                "url": "https://api.github.com/repos/philipschlender/faker-php/zipball/12b24fc1537d683bceaccdc95470f5901b8fe66f",
+                "reference": "12b24fc1537d683bceaccdc95470f5901b8fe66f",
                 "shasum": ""
             },
             "require": {
@@ -870,9 +870,9 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/philipschlender/faker-php/tree/2.1.0"
+                "source": "https://github.com/philipschlender/faker-php/tree/2.2.0"
             },
-            "time": "2025-09-09T08:46:11+00:00"
+            "time": "2025-09-12T06:52:48+00:00"
         },
         {
             "name": "phpstan/phpstan",
@@ -1268,16 +1268,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.3.8",
+            "version": "12.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "9d68c1b41fc21aac106c71cde4669fe7b99fca10"
+                "reference": "0d401d0df2e3c1703be425ecdc2d04f5c095938d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9d68c1b41fc21aac106c71cde4669fe7b99fca10",
-                "reference": "9d68c1b41fc21aac106c71cde4669fe7b99fca10",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0d401d0df2e3c1703be425ecdc2d04f5c095938d",
+                "reference": "0d401d0df2e3c1703be425ecdc2d04f5c095938d",
                 "shasum": ""
             },
             "require": {
@@ -1291,7 +1291,7 @@
                 "phar-io/manifest": "^2.0.4",
                 "phar-io/version": "^3.2.1",
                 "php": ">=8.3",
-                "phpunit/php-code-coverage": "^12.3.6",
+                "phpunit/php-code-coverage": "^12.3.7",
                 "phpunit/php-file-iterator": "^6.0.0",
                 "phpunit/php-invoker": "^6.0.0",
                 "phpunit/php-text-template": "^5.0.0",
@@ -1345,7 +1345,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.3.8"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.3.10"
             },
             "funding": [
                 {
@@ -1369,7 +1369,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-09-03T06:25:17+00:00"
+            "time": "2025-09-11T10:35:19+00:00"
         },
         {
             "name": "psr/container",
