@@ -14,6 +14,18 @@ class Stream extends FsStream implements StreamInterface
      */
     public function readRow(string $separator = ',', string $enclosure = '"', string $escape = '\\'): array
     {
+        if (1 !== strlen($separator)) {
+            throw new CsvException('The separator must have a length of 1.');
+        }
+
+        if (1 !== strlen($enclosure)) {
+            throw new CsvException('The enclosure must have a length of 1.');
+        }
+
+        if (1 !== strlen($escape)) {
+            throw new CsvException('The escape must have a length of 1.');
+        }
+
         if (!$this->isReadable()) {
             throw new CsvException('The stream must be readable.');
         }
@@ -42,6 +54,26 @@ class Stream extends FsStream implements StreamInterface
      */
     public function writeRow(array $row, string $separator = ',', string $enclosure = '"', string $escape = '\\', string $eol = "\n"): int
     {
+        if (empty($row)) {
+            throw new CsvException('The row must contain at least one element.');
+        }
+
+        if (1 !== strlen($separator)) {
+            throw new CsvException('The separator must have a length of 1.');
+        }
+
+        if (1 !== strlen($enclosure)) {
+            throw new CsvException('The enclosure must have a length of 1.');
+        }
+
+        if (1 !== strlen($escape)) {
+            throw new CsvException('The escape must have a length of 1.');
+        }
+
+        if (strlen($eol) > 1) {
+            throw new CsvException('The eol must have a length of 0 or 1.');
+        }
+
         if (!$this->isWritable()) {
             throw new CsvException('The stream must be writable.');
         }

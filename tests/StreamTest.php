@@ -92,6 +92,36 @@ class StreamTest extends TestCase
         ];
     }
 
+    public function testReadRowInvalidSeparator(): void
+    {
+        $this->expectException(CsvException::class);
+        $this->expectExceptionMessage('The separator must have a length of 1.');
+
+        $stream = new Stream('php://temp', Mode::Write);
+
+        $stream->readRow($this->fakerService->getCore()->randomString(2));
+    }
+
+    public function testReadRowInvalidEnclosure(): void
+    {
+        $this->expectException(CsvException::class);
+        $this->expectExceptionMessage('The enclosure must have a length of 1.');
+
+        $stream = new Stream('php://temp', Mode::Write);
+
+        $stream->readRow(',', $this->fakerService->getCore()->randomString(2));
+    }
+
+    public function testReadRowInvalidEscape(): void
+    {
+        $this->expectException(CsvException::class);
+        $this->expectExceptionMessage('The escape must have a length of 1.');
+
+        $stream = new Stream('php://temp', Mode::Write);
+
+        $stream->readRow(',', '"', $this->fakerService->getCore()->randomString(2));
+    }
+
     public function testReadRowStreamNotReadable(): void
     {
         $this->expectException(CsvException::class);
@@ -227,6 +257,90 @@ class StreamTest extends TestCase
         ];
     }
 
+    public function testWriteRowInvalidRow(): void
+    {
+        $this->expectException(CsvException::class);
+        $this->expectExceptionMessage('The row must contain at least one element.');
+
+        $stream = new Stream('php://temp', Mode::Write);
+
+        $stream->writeRow([]);
+    }
+
+    public function testWriteRowInvalidSeparator(): void
+    {
+        $this->expectException(CsvException::class);
+        $this->expectExceptionMessage('The separator must have a length of 1.');
+
+        $stream = new Stream('php://temp', Mode::Write);
+
+        $stream->writeRow(
+            [
+                'a',
+                'b',
+                'c',
+            ],
+            $this->fakerService->getCore()->randomString(2)
+        );
+    }
+
+    public function testWriteRowInvalidEnclosure(): void
+    {
+        $this->expectException(CsvException::class);
+        $this->expectExceptionMessage('The enclosure must have a length of 1.');
+
+        $stream = new Stream('php://temp', Mode::Write);
+
+        $stream->writeRow(
+            [
+                'a',
+                'b',
+                'c',
+            ],
+            ',',
+            $this->fakerService->getCore()->randomString(2)
+        );
+    }
+
+    public function testWriteRowInvalidEscape(): void
+    {
+        $this->expectException(CsvException::class);
+        $this->expectExceptionMessage('The escape must have a length of 1.');
+
+        $stream = new Stream('php://temp', Mode::Write);
+
+        $stream->writeRow(
+            [
+                'a',
+                'b',
+                'c',
+            ],
+            ',',
+            '"',
+            $this->fakerService->getCore()->randomString(2)
+        );
+    }
+
+    public function testWriteRowInvalidEol(): void
+    {
+        $this->expectException(CsvException::class);
+        $this->expectExceptionMessage('The eol must have a length of 0 or 1.');
+
+        $stream = new Stream('php://temp', Mode::Write);
+
+        $stream->writeRow(
+            [
+                'a',
+                'b',
+                'c',
+            ],
+            ',',
+            '"',
+            '\\',
+            $this->fakerService->getCore()->randomString(2)
+        );
+    }
+
     public function testWriteRowStreamNotWritable(): void
     {
         $this->expectException(CsvException::class);
@@ -236,6 +350,10 @@ class StreamTest extends TestCase
 
         $stream->close();
 
-        $stream->writeRow([]);
+        $stream->writeRow([
+            'a',
+            'b',
+            'c',
+        ]);
     }
 }
