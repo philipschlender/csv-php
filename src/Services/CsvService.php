@@ -20,6 +20,22 @@ class CsvService implements CsvServiceInterface
             return '';
         }
 
+        if (1 !== strlen($separator)) {
+            throw new CsvException('The separator must have a length of 1.');
+        }
+
+        if (1 !== strlen($enclosure)) {
+            throw new CsvException('The enclosure must have a length of 1.');
+        }
+
+        if (1 !== strlen($escape)) {
+            throw new CsvException('The escape must have a length of 1.');
+        }
+
+        if (strlen($eol) > 1) {
+            throw new CsvException('The eol must have a length of 0 or 1.');
+        }
+
         try {
             $stream = $this->openStream();
 
@@ -66,6 +82,18 @@ class CsvService implements CsvServiceInterface
     {
         if (empty($csv)) {
             return [];
+        }
+
+        if (1 !== strlen($separator)) {
+            throw new CsvException('The separator must have a length of 1.');
+        }
+
+        if (1 !== strlen($enclosure)) {
+            throw new CsvException('The enclosure must have a length of 1.');
+        }
+
+        if (1 !== strlen($escape)) {
+            throw new CsvException('The escape must have a length of 1.');
         }
 
         try {
@@ -133,9 +161,15 @@ class CsvService implements CsvServiceInterface
 
     /**
      * @return array<int,string>
+     *
+     * @throws CsvException
      */
     protected function getDefaultHeader(int $numberOfColumns): array
     {
+        if ($numberOfColumns < 0) {
+            throw new CsvException('The number of columns must be greater than or equal to 0.');
+        }
+
         $header = [];
 
         for ($i = 0; $i < $numberOfColumns; ++$i) {
@@ -145,8 +179,15 @@ class CsvService implements CsvServiceInterface
         return $header;
     }
 
+    /**
+     * @throws CsvException
+     */
     protected function getColumnName(int $index): string
     {
+        if ($index < 0) {
+            throw new CsvException('The index must be greater than or equal to 0.');
+        }
+
         $columnName = '';
 
         do {
