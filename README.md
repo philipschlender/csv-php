@@ -15,7 +15,7 @@
     },
     {
         "type": "github",
-        "url": "https://github.com/philipschlender/fs-php.git"
+        "url": "https://github.com/philipschlender/io-php.git"
     }
     ```
 

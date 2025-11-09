@@ -4,24 +4,23 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae4fce4320ef2c7652c9baa39347d06c",
+    "content-hash": "def8229a7e4a91e6646125fad7916352",
     "packages": [
         {
-            "name": "philipschlender/fs-php",
-            "version": "3.4.0",
+            "name": "philipschlender/io-php",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/philipschlender/fs-php.git",
-                "reference": "b67ed4853e5b561b82f94314ebc4db0a33c8f0e1"
+                "url": "https://github.com/philipschlender/io-php.git",
+                "reference": "6f62d650acbec46a68aa6873e5ba00112f2a62e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/philipschlender/fs-php/zipball/b67ed4853e5b561b82f94314ebc4db0a33c8f0e1",
-                "reference": "b67ed4853e5b561b82f94314ebc4db0a33c8f0e1",
+                "url": "https://api.github.com/repos/philipschlender/io-php/zipball/6f62d650acbec46a68aa6873e5ba00112f2a62e8",
+                "reference": "6f62d650acbec46a68aa6873e5ba00112f2a62e8",
                 "shasum": ""
             },
             "require": {
-                "ext-fileinfo": "*",
                 "php": ">=8.4"
             },
             "require-dev": {
@@ -33,7 +32,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Fs\\": "src/"
+                    "Io\\": "src/"
                 }
             },
             "autoload-dev": {
@@ -46,7 +45,7 @@
                     "./vendor/bin/php-cs-fixer fix"
                 ],
                 "phpstan": [
-                    "./vendor/bin/phpstan --memory-limit=256M"
+                    "./vendor/bin/phpstan"
                 ],
                 "phpunit": [
                     "./vendor/bin/phpunit"
@@ -69,9 +68,9 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/philipschlender/fs-php/tree/3.4.0"
+                "source": "https://github.com/philipschlender/io-php/tree/1.0.0"
             },
-            "time": "2025-11-09T11:58:31+00:00"
+            "time": "2025-11-09T15:32:26+00:00"
         }
     ],
     "packages-dev": [

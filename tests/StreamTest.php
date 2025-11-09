@@ -4,7 +4,7 @@ namespace Tests;
 
 use Csv\Exceptions\CsvException;
 use Csv\Models\Stream;
-use Fs\Enumerations\Mode;
+use Io\Enumerations\Mode;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 class StreamTest extends TestCase
