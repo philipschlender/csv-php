@@ -5,7 +5,8 @@ namespace Csv\Services;
 use Csv\Exceptions\CsvException;
 use Csv\Models\Stream;
 use Csv\Models\StreamInterface;
-use Fs\Enumerations\Mode;
+use Io\Enumerations\Mode;
+use Io\Exceptions\IoException;
 
 class CsvService implements CsvServiceInterface
 {
@@ -60,16 +61,8 @@ class CsvService implements CsvServiceInterface
             $stream->rewind();
 
             return $stream->read();
-        } catch (\Throwable $throwable) {
-            if ($throwable instanceof CsvException) {
-                throw $throwable;
-            }
-
-            throw new CsvException($throwable->getMessage(), 0, $throwable);
-        } finally {
-            if (isset($stream)) {
-                $stream->close();
-            }
+        } catch (IoException $exception) {
+            throw new CsvException($exception->getMessage(), 0, $exception);
         }
     }
 
@@ -134,16 +127,8 @@ class CsvService implements CsvServiceInterface
             }
 
             return $rows;
-        } catch (\Throwable $throwable) {
-            if ($throwable instanceof CsvException) {
-                throw $throwable;
-            }
-
-            throw new CsvException($throwable->getMessage(), 0, $throwable);
-        } finally {
-            if (isset($stream)) {
-                $stream->close();
-            }
+        } catch (IoException $exception) {
+            throw new CsvException($exception->getMessage(), 0, $exception);
         }
     }
 
@@ -154,8 +139,8 @@ class CsvService implements CsvServiceInterface
     {
         try {
             return new Stream('php://temp', Mode::Write);
-        } catch (\Throwable $throwable) {
-            throw new CsvException($throwable->getMessage(), 0, $throwable);
+        } catch (IoException $exception) {
+            throw new CsvException($exception->getMessage(), 0, $exception);
         }
     }
 

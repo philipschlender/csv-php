@@ -3,9 +3,10 @@
 namespace Csv\Models;
 
 use Csv\Exceptions\CsvException;
-use Fs\Models\Stream as FsStream;
+use Io\Exceptions\IoException;
+use Io\Models\Stream as IoStream;
 
-class Stream extends FsStream implements StreamInterface
+class Stream extends IoStream implements StreamInterface
 {
     /**
      * @return array<int,string>
@@ -30,8 +31,12 @@ class Stream extends FsStream implements StreamInterface
             throw new CsvException('The stream must be readable.');
         }
 
-        if ($this->eof()) {
-            return [];
+        try {
+            if ($this->eof()) {
+                return [];
+            }
+        } catch (IoException $exception) {
+            throw new CsvException($exception->getMessage(), 0, $exception);
         }
 
         $row = @fgetcsv($this->stream, null, $separator, $enclosure, $escape);

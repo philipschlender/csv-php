@@ -3,9 +3,9 @@
 namespace Csv\Models;
 
 use Csv\Exceptions\CsvException;
-use Fs\Models\StreamInterface as FsStreamInterface;
+use Io\Models\StreamInterface as IoStreamInterface;
 
-interface StreamInterface extends FsStreamInterface
+interface StreamInterface extends IoStreamInterface
 {
     /**
      * @return array<int,string>
