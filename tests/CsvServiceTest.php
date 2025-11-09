@@ -190,7 +190,7 @@ class CsvServiceTest extends TestCase
                 ],
             ],
             true,
-            $this->fakerService->getCore()->randomString(2)
+            $this->fakerService->getDataTypeGenerator()->randomString(2)
         );
     }
 
@@ -209,7 +209,7 @@ class CsvServiceTest extends TestCase
             ],
             true,
             ',',
-            $this->fakerService->getCore()->randomString(2)
+            $this->fakerService->getDataTypeGenerator()->randomString(2)
         );
     }
 
@@ -229,7 +229,7 @@ class CsvServiceTest extends TestCase
             true,
             ',',
             '"',
-            $this->fakerService->getCore()->randomString(2)
+            $this->fakerService->getDataTypeGenerator()->randomString(2)
         );
     }
 
@@ -250,7 +250,7 @@ class CsvServiceTest extends TestCase
             ',',
             '"',
             '\\',
-            $this->fakerService->getCore()->randomString(2)
+            $this->fakerService->getDataTypeGenerator()->randomString(2)
         );
     }
 
@@ -437,7 +437,7 @@ class CsvServiceTest extends TestCase
         $this->expectException(CsvException::class);
         $this->expectExceptionMessage('The separator must have a length of 1.');
 
-        $this->csvService->csvToArray("A,B,C\n1,2,3\n", true, $this->fakerService->getCore()->randomString(2));
+        $this->csvService->csvToArray("A,B,C\n1,2,3\n", true, $this->fakerService->getDataTypeGenerator()->randomString(2));
     }
 
     public function testCsvToArrayInvalidEnclosure(): void
@@ -445,7 +445,7 @@ class CsvServiceTest extends TestCase
         $this->expectException(CsvException::class);
         $this->expectExceptionMessage('The enclosure must have a length of 1.');
 
-        $this->csvService->csvToArray("A,B,C\n1,2,3\n", true, ',', $this->fakerService->getCore()->randomString(2));
+        $this->csvService->csvToArray("A,B,C\n1,2,3\n", true, ',', $this->fakerService->getDataTypeGenerator()->randomString(2));
     }
 
     public function testCsvToArrayInvalidEscape(): void
@@ -453,7 +453,7 @@ class CsvServiceTest extends TestCase
         $this->expectException(CsvException::class);
         $this->expectExceptionMessage('The escape must have a length of 1.');
 
-        $this->csvService->csvToArray("A,B,C\n1,2,3\n", true, ',', '"', $this->fakerService->getCore()->randomString(2));
+        $this->csvService->csvToArray("A,B,C\n1,2,3\n", true, ',', '"', $this->fakerService->getDataTypeGenerator()->randomString(2));
     }
 
     public function testCsvToArrayRowsNotSameNumberOfColumns(): void
