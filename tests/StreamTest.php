@@ -99,7 +99,7 @@ class StreamTest extends TestCase
 
         $stream = new Stream('php://temp', Mode::Write);
 
-        $stream->readRow($this->fakerService->getCore()->randomString(2));
+        $stream->readRow($this->fakerService->getDataTypeGenerator()->randomString(2));
     }
 
     public function testReadRowInvalidEnclosure(): void
@@ -109,7 +109,7 @@ class StreamTest extends TestCase
 
         $stream = new Stream('php://temp', Mode::Write);
 
-        $stream->readRow(',', $this->fakerService->getCore()->randomString(2));
+        $stream->readRow(',', $this->fakerService->getDataTypeGenerator()->randomString(2));
     }
 
     public function testReadRowInvalidEscape(): void
@@ -119,7 +119,7 @@ class StreamTest extends TestCase
 
         $stream = new Stream('php://temp', Mode::Write);
 
-        $stream->readRow(',', '"', $this->fakerService->getCore()->randomString(2));
+        $stream->readRow(',', '"', $this->fakerService->getDataTypeGenerator()->randomString(2));
     }
 
     public function testReadRowStreamNotReadable(): void
@@ -280,7 +280,7 @@ class StreamTest extends TestCase
                 'b',
                 'c',
             ],
-            $this->fakerService->getCore()->randomString(2)
+            $this->fakerService->getDataTypeGenerator()->randomString(2)
         );
     }
 
@@ -298,7 +298,7 @@ class StreamTest extends TestCase
                 'c',
             ],
             ',',
-            $this->fakerService->getCore()->randomString(2)
+            $this->fakerService->getDataTypeGenerator()->randomString(2)
         );
     }
 
@@ -317,7 +317,7 @@ class StreamTest extends TestCase
             ],
             ',',
             '"',
-            $this->fakerService->getCore()->randomString(2)
+            $this->fakerService->getDataTypeGenerator()->randomString(2)
         );
     }
 
@@ -337,7 +337,7 @@ class StreamTest extends TestCase
             ',',
             '"',
             '\\',
-            $this->fakerService->getCore()->randomString(2)
+            $this->fakerService->getDataTypeGenerator()->randomString(2)
         );
     }
 
