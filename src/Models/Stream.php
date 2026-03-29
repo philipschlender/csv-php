@@ -13,7 +13,7 @@ class Stream extends IoStream implements StreamInterface
      *
      * @throws CsvException
      */
-    public function readRow(string $separator = ',', string $enclosure = '"', string $escape = '\\'): array
+    public function readRow(string $separator = ',', string $enclosure = '"'): array
     {
         if (1 !== strlen($separator)) {
             throw new CsvException('The separator must have a length of 1.');
@@ -21,10 +21,6 @@ class Stream extends IoStream implements StreamInterface
 
         if (1 !== strlen($enclosure)) {
             throw new CsvException('The enclosure must have a length of 1.');
-        }
-
-        if (1 !== strlen($escape)) {
-            throw new CsvException('The escape must have a length of 1.');
         }
 
         if (!$this->isReadable()) {
@@ -39,7 +35,7 @@ class Stream extends IoStream implements StreamInterface
             throw new CsvException($exception->getMessage(), 0, $exception);
         }
 
-        $row = @fgetcsv($this->stream, null, $separator, $enclosure, $escape);
+        $row = @fgetcsv($this->stream, null, $separator, $enclosure, '');
 
         if (!is_array($row)) {
             throw new CsvException('Failed to read a row of the stream.');
@@ -57,7 +53,7 @@ class Stream extends IoStream implements StreamInterface
      *
      * @throws CsvException
      */
-    public function writeRow(array $row, string $separator = ',', string $enclosure = '"', string $escape = '\\', string $eol = "\n"): int
+    public function writeRow(array $row, string $separator = ',', string $enclosure = '"', string $eol = "\n"): int
     {
         if (empty($row)) {
             throw new CsvException('The row must contain at least one element.');
@@ -71,10 +67,6 @@ class Stream extends IoStream implements StreamInterface
             throw new CsvException('The enclosure must have a length of 1.');
         }
 
-        if (1 !== strlen($escape)) {
-            throw new CsvException('The escape must have a length of 1.');
-        }
-
         if (strlen($eol) > 1) {
             throw new CsvException('The eol must have a length of 0 or 1.');
         }
@@ -83,7 +75,7 @@ class Stream extends IoStream implements StreamInterface
             throw new CsvException('The stream must be writable.');
         }
 
-        $numberOfBytes = @fputcsv($this->stream, $row, $separator, $enclosure, $escape, $eol);
+        $numberOfBytes = @fputcsv($this->stream, $row, $separator, $enclosure, '', $eol);
 
         if (!is_int($numberOfBytes)) {
             throw new CsvException('Failed to write the row to the stream.');
