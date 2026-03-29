@@ -15,7 +15,7 @@ class CsvService implements CsvServiceInterface
      *
      * @throws CsvException
      */
-    public function arrayToCsv(array $rows, bool $useHeader = true, string $separator = ',', string $enclosure = '"', string $escape = '\\', string $eol = "\n"): string
+    public function arrayToCsv(array $rows, bool $useHeader = true, string $separator = ',', string $enclosure = '"', string $eol = "\n"): string
     {
         if (empty($rows)) {
             return '';
@@ -29,10 +29,6 @@ class CsvService implements CsvServiceInterface
             throw new CsvException('The enclosure must have a length of 1.');
         }
 
-        if (1 !== strlen($escape)) {
-            throw new CsvException('The escape must have a length of 1.');
-        }
-
         if (strlen($eol) > 1) {
             throw new CsvException('The eol must have a length of 0 or 1.');
         }
@@ -43,7 +39,7 @@ class CsvService implements CsvServiceInterface
             if ($useHeader) {
                 $header = array_keys($rows[0]);
 
-                $stream->writeRow($header, $separator, $enclosure, $escape, $eol);
+                $stream->writeRow($header, $separator, $enclosure, $eol);
             }
 
             $numberOfColumns = count($rows[0]);
@@ -55,7 +51,7 @@ class CsvService implements CsvServiceInterface
                     throw new CsvException('All rows must have the same number of columns.');
                 }
 
-                $stream->writeRow($row, $separator, $enclosure, $escape, $eol);
+                $stream->writeRow($row, $separator, $enclosure, $eol);
             }
 
             $stream->rewind();
@@ -71,7 +67,7 @@ class CsvService implements CsvServiceInterface
      *
      * @throws CsvException
      */
-    public function csvToArray(string $csv, bool $hasHeader = true, string $separator = ',', string $enclosure = '"', string $escape = '\\'): array
+    public function csvToArray(string $csv, bool $hasHeader = true, string $separator = ',', string $enclosure = '"'): array
     {
         if (empty($csv)) {
             return [];
@@ -85,10 +81,6 @@ class CsvService implements CsvServiceInterface
             throw new CsvException('The enclosure must have a length of 1.');
         }
 
-        if (1 !== strlen($escape)) {
-            throw new CsvException('The escape must have a length of 1.');
-        }
-
         try {
             $stream = $this->openStream();
 
@@ -97,9 +89,9 @@ class CsvService implements CsvServiceInterface
             $stream->rewind();
 
             if ($hasHeader) {
-                $header = $stream->readRow($separator, $enclosure, $escape);
+                $header = $stream->readRow($separator, $enclosure);
             } else {
-                $row = $stream->readRow($separator, $enclosure, $escape);
+                $row = $stream->readRow($separator, $enclosure);
 
                 $header = $this->getDefaultHeader(count($row));
 
@@ -111,7 +103,7 @@ class CsvService implements CsvServiceInterface
             $rows = [];
 
             while (true) {
-                $row = $stream->readRow($separator, $enclosure, $escape);
+                $row = $stream->readRow($separator, $enclosure);
 
                 if (empty($row)) {
                     break;

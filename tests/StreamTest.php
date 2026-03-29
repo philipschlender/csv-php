@@ -112,16 +112,6 @@ class StreamTest extends TestCase
         $stream->readRow(',', $this->fakerService->getDataTypeGenerator()->randomString(2));
     }
 
-    public function testReadRowInvalidEscape(): void
-    {
-        $this->expectException(CsvException::class);
-        $this->expectExceptionMessage('The escape must have a length of 1.');
-
-        $stream = new Stream('php://temp', Mode::Write);
-
-        $stream->readRow(',', '"', $this->fakerService->getDataTypeGenerator()->randomString(2));
-    }
-
     public function testReadRowStreamNotReadable(): void
     {
         $this->expectException(CsvException::class);
@@ -302,25 +292,6 @@ class StreamTest extends TestCase
         );
     }
 
-    public function testWriteRowInvalidEscape(): void
-    {
-        $this->expectException(CsvException::class);
-        $this->expectExceptionMessage('The escape must have a length of 1.');
-
-        $stream = new Stream('php://temp', Mode::Write);
-
-        $stream->writeRow(
-            [
-                'a',
-                'b',
-                'c',
-            ],
-            ',',
-            '"',
-            $this->fakerService->getDataTypeGenerator()->randomString(2)
-        );
-    }
-
     public function testWriteRowInvalidEol(): void
     {
         $this->expectException(CsvException::class);
@@ -336,7 +307,6 @@ class StreamTest extends TestCase
             ],
             ',',
             '"',
-            '\\',
             $this->fakerService->getDataTypeGenerator()->randomString(2)
         );
     }

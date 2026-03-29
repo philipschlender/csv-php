@@ -12,12 +12,12 @@ interface StreamInterface extends IoStreamInterface
      *
      * @throws CsvException
      */
-    public function readRow(string $separator = ',', string $enclosure = '"', string $escape = '\\'): array;
+    public function readRow(string $separator = ',', string $enclosure = '"'): array;
 
     /**
      * @param array<int|string,string> $row
      *
      * @throws CsvException
      */
-    public function writeRow(array $row, string $separator = ',', string $enclosure = '"', string $escape = '\\', string $eol = "\n"): int;
+    public function writeRow(array $row, string $separator = ',', string $enclosure = '"', string $eol = "\n"): int;
 }
